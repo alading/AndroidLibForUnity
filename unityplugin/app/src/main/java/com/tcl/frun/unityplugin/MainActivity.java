@@ -10,6 +10,7 @@ import android.util.Log;
 
 import com.tcl.frun.api.IFrunAidlInterface;
 import com.tcl.frun.api.IGameAidlInterface;
+import com.unity3d.player.UnityPlayer;
 import com.unity3d.player.UnityPlayerActivity;
 
 
@@ -26,23 +27,27 @@ public class MainActivity extends UnityPlayerActivity {
 
         @Override
         public void onInit() throws RemoteException {
-            Log.e(TAG, "-->on Init "+gameID);
+            Log.e(TAG, "-->on Init : "+gameID);
+            UnityPlayer.UnitySendMessage("Main Camera", "onInit", "initialization");
 
         }
 
         @Override
         public void onRun() throws RemoteException {
             Log.e(TAG, "-->on run");
+            UnityPlayer.UnitySendMessage("Main Camera", "onRun", "from java");
         }
 
         @Override
         public void onStand() throws RemoteException {
             Log.e(TAG, "-->on stop ");
+            UnityPlayer.UnitySendMessage("Main Camera", "onStand", "from java");
         }
 
         @Override
         public void onJump() throws RemoteException {
             Log.e(TAG, "-->on jump");
+            UnityPlayer.UnitySendMessage("Main Camera", "onJump", "from java");
 
         }
 
